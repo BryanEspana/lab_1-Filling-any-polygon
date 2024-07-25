@@ -54,8 +54,13 @@ fn main() {
         (165, 380), (185, 360), (180, 330), (207, 345), (233, 330),
         (230, 360), (250, 380), (220, 385), (205, 410), (193, 383),
     ];
+    
+    let polygon_2 = [
+        (321, 335), (288, 286), (339, 251), (374, 302),
+    ];
 
 
+    //Primer poligono
     fill_polygon(&mut frame_buffer, &polygon_1, &Color::YELLOW);
 
     for i in 0..polygon_1.len() {
@@ -63,6 +68,16 @@ fn main() {
         let (x1, y1) = polygon_1[(i + 1) % polygon_1.len()];
         draw_line(&mut frame_buffer, x0, y0, x1, y1, &Color::WHITE);
     }
+
+    // Segundo poligono
+    fill_polygon(&mut frame_buffer, &polygon_2, &Color::BLUE);
+
+    for i in 0..polygon_2.len() {
+        let (x0, y0) = polygon_2[i];
+        let (x1, y1) = polygon_2[(i + 1) % polygon_2.len()];
+        draw_line(&mut frame_buffer, x0, y0, x1, y1, &Color::WHITE);
+    }
+    
 
     frame_buffer.save_as_bmp("out.bmp");
 }
